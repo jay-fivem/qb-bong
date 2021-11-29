@@ -57,7 +57,6 @@ RegisterNetEvent("qb-bong:client:use", function(strain)
 						end
 					elseif data.amount >= v.sick then 
 						if data.high == 1 then 
-							print("throw up sick") 
 							DoScreenFadeOut(5000)
 							SetPedToRagdoll(ped, 30000, 30000, 0, 0, 0, 0)
 							Wait(20000)
