@@ -7,7 +7,6 @@ RegisterNetEvent("qb-bong:server:effects", function(entity, coords)
 end)
 
 RegisterNetEvent('qb-bong:server:setdata', function(citizenid, data, amount)
-    print(data..':'..amount)
     if data == "time" then
         amount = os.time() + amount
     end
