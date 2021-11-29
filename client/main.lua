@@ -10,10 +10,10 @@ CreateThread(function()
 			citizenid = QBCore.Functions.GetPlayerData().citizenid
 			QBCore.Functions.TriggerCallback('qb-bong:server:getdata', function(data)
 				QBCore.Functions.TriggerCallback('qb-bong:server:ostime', function(time)
-					if (time - data.time) < 0 and (data.tolerance-1) ~= -1 then
+					if (data.time - time) < 0 and (data.tolerance-1) ~= -1 then
 						TriggerServerEvent("qb-bong:server:setdata", citizenid, "tolerance", data.tolerance-1)
 					end
-					if (time - data.time) < 1800 and (data.amount-1) ~= -1 then
+					if (data.time - time) < 1800 and (data.amount-1) ~= -1 then
 						TriggerServerEvent("qb-bong:server:setdata", citizenid, "amount", data.amount-1)
 					end
 				end)
