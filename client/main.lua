@@ -9,6 +9,7 @@ CreateThread(function()
 			sleep = 60000
 			citizenid = QBCore.Functions.GetPlayerData().citizenid
 			QBCore.Functions.TriggerCallback('qb-bong:server:getdata', function(data)
+				if data.high == 1 then TriggerEvent("qb-bong:client:high", citizenid, PlayerPedId()) end		
 				QBCore.Functions.TriggerCallback('qb-bong:server:ostime', function(time)
 					if (data.time - time) < 0 and (data.tolerance-1) ~= -1 then
 						TriggerServerEvent("qb-bong:server:setdata", citizenid, "tolerance", data.tolerance-1)
