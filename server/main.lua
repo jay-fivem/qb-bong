@@ -1,8 +1,8 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterNetEvent("qb-bong:server:effects", function(entity, coords)
-	for _, player in pairs(QBCore.Functions.GetPlayers()) do
-		TriggerClientEvent("qb-bong:client:effects", player, entity, coords)
+    for _, player in pairs(QBCore.Functions.GetPlayers()) do
+	TriggerClientEvent("qb-bong:client:effects", player, entity, coords)
     end
 end)
 
