@@ -10,7 +10,7 @@ RegisterNetEvent('qb-bong:server:setdata', function(citizenid, data, amount)
     if data == "time" then
         amount = os.time() + amount
     end
-    exports.oxmysql:execute('UPDATE bongs SET '..data..' = ? WHERE citizenid = ?', {amount, citizenid})
+    MySQL.Sync.execute('UPDATE bongs SET '..data..' = ? WHERE citizenid = ?', {amount, citizenid})
 end)
 
 QBCore.Functions.CreateCallback("qb-bong:server:ostime", function(source,cb)
@@ -19,9 +19,9 @@ end)
 
 QBCore.Functions.CreateCallback("qb-bong:server:getdata", function(source, cb)
     local citizenid = QBCore.Functions.GetPlayer(source).PlayerData.citizenid
-    local result = exports.oxmysql:executeSync('SELECT * FROM bongs WHERE citizenid = ?', {citizenid})
+    local result = MySQL.Sync.fetchAll('SELECT * FROM bongs WHERE citizenid = ?', {citizenid})
     if result[1] == nil then
-        exports.oxmysql:insert('INSERT INTO bongs (citizenid, tolerance, amount, high, time)VALUES(?,?,?,?,?)', {citizenid,0,0,0,0})
+        MySQL.Sync.insert('INSERT INTO bongs (citizenid, tolerance, amount, high, time)VALUES(?,?,?,?,?)', {citizenid,0,0,0,0})
     else
         cb(result[1])
     end
